@@ -8,8 +8,8 @@ echo "Building ha-location Backend"
 npm install
 npm run build
 
-echo "Running migrations"
-npm run typeorm -- migration:run
+# echo "Running migrations"
+# npm run typeorm -- migration:run
 
 usage=$(lsof -n -i -P | grep LISTEN | grep :4000 | awk '{print $2}')
 
