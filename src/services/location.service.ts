@@ -55,6 +55,9 @@ export class LocationService {
 
         if (!ipLocation) {
             const rawLocation = await this.ipService.lookupIp(ip);
+            if (!rawLocation.country) {
+                throw new Error("Failed to locate IP");
+            }
             const newLocation = await this.newLocation(rawLocation.country, rawLocation.county, rawLocation.region, rawLocation.city, rawLocation.address, rawLocation.areaCode, rawLocation.areaCodeSuffix);
             ipLocation = await this.newIpLocation(ip, newLocation);
         }
