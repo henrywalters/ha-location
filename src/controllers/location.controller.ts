@@ -20,6 +20,7 @@ export class LocationController {
 
             throw new BadRequestException("Missing ip or coordinates query parameters");
         } catch (e) {
+            console.log(e);
             throw new HttpException(e.message, 400);
         }
     }
